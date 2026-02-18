@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humanity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #09090b;
+            --text: #e0dde8;
+            --dim: #807d8e;
+            --faint: #28262f;
+            --gold: #d4a843;
+            --gold-soft: rgba(212,168,67,.10);
+            --blue: #6b8fd4;
+            --violet: #a07ed6;
+            --serif: 'Cormorant Garamond', Georgia, serif;
+            --sans: 'Instrument Sans', -apple-system, sans-serif;
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body{font-family:var(--sans);background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased}
+        .w{max-width:920px;margin:0 auto;padding:0 36px}
+
+        /* NAV */
+        nav{padding:32px 0;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--faint)}
+        .logo{font-family:var(--serif);font-size:1rem;letter-spacing:.22em;text-transform:uppercase;color:var(--dim);font-weight:400}
+        .nav-links{display:flex;gap:28px}
+        nav a{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);text-decoration:none;transition:color .3s;font-weight:500}
+        nav a:hover{color:var(--gold)}
+        nav a.active{color:var(--gold)}
+
+        /* HERO */
+        .hero{padding:100px 0 72px;text-align:center}
+        .eyebrow{font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;font-weight:600}
+        .hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(3.2rem,7vw,5.8rem);line-height:1.06;letter-spacing:-.015em;margin-bottom:32px}
+        .hero h1 em{font-style:italic;background:linear-gradient(135deg,#8eaee0 0%,#b9a0d8 30%,#d8bf8a 65%,#d4a843 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero p{font-size:1.1rem;color:var(--dim);max-width:580px;margin:0 auto;line-height:1.85}
+        .line{width:56px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:60px auto 0}
+
+        /* THESIS */
+        .thesis{padding:80px 0;border-top:1px solid var(--faint);text-align:center}
+        .section-label{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:24px;font-weight:600}
+        .thesis h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;line-height:1.2;margin-bottom:20px;max-width:680px;margin-left:auto;margin-right:auto}
+        .thesis p{font-size:1.05rem;color:var(--dim);max-width:600px;margin:0 auto;line-height:1.85}
+
+        /* ENTITIES */
+        .entities{padding:72px 0;border-top:1px solid var(--faint)}
+        .entities-label{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);margin-bottom:48px;font-weight:600;text-align:center}
+        .entities-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--faint)}
+        .entity{background:var(--bg);padding:40px 36px;transition:background .3s}
+        .entity:hover{background:rgba(212,168,67,.02)}
+        .entity-pct{font-family:var(--serif);font-size:3.6rem;font-weight:300;line-height:1;margin-bottom:16px}
+        .entity:first-child .entity-pct{color:var(--gold)}
+        .entity:last-child .entity-pct{color:var(--blue)}
+        .entity h3{font-family:var(--serif);font-size:1.6rem;font-weight:400;margin-bottom:12px}
+        .entity p{font-size:.9rem;color:var(--dim);line-height:1.75;margin-bottom:24px}
+        .entity-link{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:600;transition:opacity .3s}
+        .entity-link:hover{opacity:.7}
+        .entity-link.blue{color:var(--blue)}
+
+        /* PILLARS */
+        .pillars{padding:72px 0;border-top:1px solid var(--faint)}
+        .pillars-label{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);margin-bottom:48px;font-weight:600}
+        .pillars-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--faint)}
+        .pillar{background:var(--bg);padding:28px 28px}
+        .pillar-icon{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--gold);margin-bottom:14px;line-height:1}
+        .pillar h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;margin-bottom:10px}
+        .pillar p{font-size:.88rem;color:var(--dim);line-height:1.7}
+
+        /* TIMELINE */
+        .timeline{padding:72px 0;border-top:1px solid var(--faint)}
+        .timeline-label{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--dim);margin-bottom:48px;font-weight:600}
+        .timeline-row{display:flex;gap:0}
+        .tphase{flex:1;padding:24px 0;border-top:2px solid var(--faint);transition:border-color .3s}
+        .tphase:hover{border-top-color:var(--gold)}
+        .tphase-date{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;font-weight:600}
+        .tphase-title{font-size:.95rem;color:var(--text);font-weight:500;margin-bottom:6px}
+        .tphase-desc{font-size:.82rem;color:var(--dim);line-height:1.6}
+        .tphase + .tphase{padding-left:28px;border-left:1px solid var(--faint)}
+
+        /* CTA */
+        .cta{padding:80px 0;border-top:1px solid var(--faint);text-align:center}
+        .cta h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;font-style:italic;color:var(--dim);max-width:540px;margin:0 auto 12px;line-height:1.3}
+        .cta p{font-size:.9rem;color:var(--faint);margin-bottom:36px}
+        .cta a{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-decoration:none;padding:14px 44px;border:1px solid rgba(212,168,67,.3);font-weight:600;transition:all .4s}
+        .cta a:hover{background:var(--gold-soft);border-color:rgba(212,168,67,.6)}
+
+        /* FOOTER */
+        footer{padding:28px 0;border-top:1px solid var(--faint);display:flex;justify-content:space-between;align-items:center}
+        footer span{font-size:.68rem;color:var(--faint);letter-spacing:.04em}
+        .footer-links{display:flex;gap:20px}
+        footer a{font-size:.68rem;color:var(--dim);text-decoration:none;transition:color .3s}
+        footer a:hover{color:var(--gold)}
+
+        /* FADE */
+        .fi{opacity:0;transform:translateY(12px);animation:fu .85s ease forwards}
+        @keyframes fu{to{opacity:1;transform:translateY(0)}}
+        .d1{animation-delay:.1s}.d2{animation-delay:.22s}.d3{animation-delay:.36s}.d4{animation-delay:.5s}
+
+        @media(max-width:640px){
+            .w{padding:0 22px}
+            .hero{padding:72px 0 56px}
+            .entities-grid{grid-template-columns:1fr}
+            .pillars-grid{grid-template-columns:1fr}
+            .timeline-row{flex-direction:column}
+            .tphase + .tphase{padding-left:0;border-left:none;margin-top:24px}
+            footer{flex-direction:column;gap:12px;text-align:center}
+        }
+    </style>
+</head>
+<body>
+<div class="w">
+    <nav>
+        <div class="logo">Humanity</div>
+        <div class="nav-links">
+            <a href="#" class="active">Parent</a>
+            <a href="https://evolution.fund">Evolution Fund</a>
+            <a href="https://humanitylabs.org">Humanity Labs</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="eyebrow fi">One entity. Two mandates.</div>
+        <h1 class="fi d1">Capital and intelligence,<br><em>compounding together.</em></h1>
+        <p class="fi d2">Humanity is the parent structure through which capital and technology compound across two aligned mandates — deploying resources where the universe's oldest measurable trend is accelerating most rapidly.</p>
+        <div class="line fi d3"></div>
+    </section>
+
+    <section class="thesis fi d2">
+        <div class="section-label">Core Thesis</div>
+        <h2>Value flows to whoever creates order from chaos.</h2>
+        <p>For 3.8 billion years, life has been doing exactly this — organizing matter, capturing energy, transmitting information. AI is now compressing that arc into a decade. We sit at the inflection point where both the physical infrastructure enabling this acceleration, and the intelligence layer running on top of it, can be owned simultaneously.</p>
+    </section>
+
+    <section class="entities fi d3">
+        <div class="entities-label">Structure</div>
+        <div class="entities-grid">
+            <div class="entity">
+                <div class="entity-pct">90%</div>
+                <h3>Evolution Fund</h3>
+                <p>Capital deployed into the physical infrastructure of the coming acceleration — critical resources, AI compute, energy, and store of value. Built for the patient. Positioned for the inevitable.</p>
+                <a href="https://evolution.fund" class="entity-link">evolution.fund →</a>
+            </div>
+            <div class="entity">
+                <div class="entity-pct">10%</div>
+                <h3>Humanity Labs</h3>
+                <p>Intelligence deployed into micro AI ventures and in-house SaaS tools. Built to compound the coordination layer — the software infrastructure that captures value as the physical build-out matures.</p>
+                <a href="https://humanitylabs.org" class="entity-link blue">humanitylabs.org →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="pillars fi d3">
+        <div class="pillars-label">What We Believe</div>
+        <div class="pillars-grid">
+            <div class="pillar">
+                <div class="pillar-icon">⊕</div>
+                <h3>Energy enables everything</h3>
+                <p>Intelligence — artificial or biological — runs on energy. Uranium, grid infrastructure, and nuclear utilities form the foundation of every AI model deployed at scale.</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-icon">∿</div>
+                <h3>Materials equilibrate, information compounds</h3>
+                <p>Commodity prices revert — supply eventually responds. But information compounds at near-zero marginal cost. The rotation from one to the other is not if, but when.</p>
+            </div>
+            <div class="pillar">
+                <div class="pillar-icon">◎</div>
+                <h3>The coordination layer wins</h3>
+                <p>Every physical wave produces a software wave that captures more value. Railways gave way to logistics software. The AI infrastructure wave will give way to the AI coordination layer.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline fi d4">
+        <div class="timeline-label">Evolution of Capital</div>
+        <div class="timeline-row">
+            <div class="tphase">
+                <div class="tphase-date">Now → 2028</div>
+                <div class="tphase-title">Scarcity Phase</div>
+                <div class="tphase-desc">Materials and energy at full weight. Physical constraints are measurable and investable.</div>
+            </div>
+            <div class="tphase">
+                <div class="tphase-date">2026 → 2032</div>
+                <div class="tphase-title">Build-Out Matures</div>
+                <div class="tphase-desc">New supply comes online. Rotate materials proceeds into AI infrastructure and dry powder.</div>
+            </div>
+            <div class="tphase">
+                <div class="tphase-date">2028+</div>
+                <div class="tphase-title">Information Dominance</div>
+                <div class="tphase-desc">The coordination layer captures most value. Humanity Labs assets move to the fore.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta fi d4">
+        <h2>Adequate if wrong.<br>Strong if right.<br>Exceptional if it accelerates.</h2>
+        <p>Complexity compounds. We allocate accordingly.</p>
+        <a href="mailto:nolanjamesfyfe@gmail.com">Get in touch</a>
+    </section>
+
+    <footer>
+        <span>&copy; 2026 Humanity</span>
+        <div class="footer-links">
+            <a href="https://evolution.fund">Evolution Fund</a>
+            <a href="https://humanitylabs.org">Humanity Labs</a>
+            <a href="https://novairesignal.com">Novaire Signal</a>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
